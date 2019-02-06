@@ -1,0 +1,37 @@
+<h2 class="page-header">Add User</h2>
+<form (submit)="onUserAddSubmit()">
+	<div class="row">
+		<div class="col-xs-4">
+    <label>confirmed</label>
+    <!--
+    <input class="form-control" type="text" [(ngModel)]="confirmed" name="confirmed" required>
+    -->
+     <select class="form-control" type="text" [(ngModel)]="confirmed" name="confirmed" required>
+      <option value="true">TRUE</option>
+      <option value="false">FALSE</option>
+    </select>
+  </div>
+  <div class="col-xs-4">
+    <label>Name</label>
+    <input class="form-control" type="text" [(ngModel)]="name" name="name" required>
+  </div>
+  
+  <div class="col-xs-4">
+    <label>Email</label>
+    <input class="form-control" type="text" [(ngModel)]="email" name="email" required>
+  </div>
+  </div>
+  <div class="row">
+	  <div class="col-xs-4">
+    <label>Phone</label>
+    <input class="form-control" type="text" [(ngModel)]="phone" name="phone" >
+  </div>
+  <div class="col-xs-4">
+    <label>Role</label>
+    <input class="form-control" type="text" [(ngModel)]="role" name="role" required>
+  </div>
+  </div>
+  
+  <a class="btn" [routerLink]="['/users']">Back</a>
+  <input type="submit" value="submit" class="btn btn-success">
+</form>

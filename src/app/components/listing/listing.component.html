@@ -1,0 +1,54 @@
+<div *ngIf = "listing">
+
+	<h2 class ="page header">{{listing.name}}</h2>
+      	<p>{{ listing.address }}</p>
+	<div class = "row">
+		<div class = "col-md-4">
+			<!--
+			<img style="width:100%" class="thumbnail" src="{{imageUrl}}">
+			-->
+<div *ngIf="lat && lng">
+<!--
+<agm-map [zoom]="10" [latitude]="lat" [longitude]="lng">
+-->
+  <agm-map [latitude]="lat" [longitude]="lng" [streetViewControl]="false" [zoom]="zoom">
+    <agm-marker [latitude]="lat" [longitude]="lng">
+    </agm-marker>
+  </agm-map>
+
+</div>
+		</div>
+		
+		<div class = "col-md-8">
+			<ul class ="list-group">
+				<!--
+				<li class = "list-group-item">serviceType: {{listing.serviceType}}</li>
+				-->
+				<li class = "list-group-item" *ngIf="listing.serviceType == 'ESNY'">serviceType: <strong>({{listing.serviceType}}) Emergency Shelter</strong></li>
+				<li class = "list-group-item" *ngIf="listing.serviceType == 'EFW'">serviceType: <strong>({{listing.serviceType}}) Emergency Food/Water</strong></li>
+				<li class = "list-group-item" *ngIf="listing.serviceType == 'GS'">serviceType: <strong>({{listing.serviceType}}) Open Gas Stations</strong></li>
+				<li class = "list-group-item" *ngIf="listing.serviceType == 'CS'">serviceType: <strong>({{listing.serviceType}}) Charging Stations</strong></li>
+				<li class = "list-group-item" *ngIf="listing.serviceType == 'OFS'">serviceType: <strong>({{listing.serviceType}}) Open Food Stores</strong></li>
+				<li class = "list-group-item" *ngIf="listing.serviceType == 'WATM'">serviceType: <strong>({{listing.serviceType}}) Working ATMs</strong></li>
+				<li class = "list-group-item" *ngIf="listing.serviceType == 'other'">serviceType: <strong>({{listing.serviceType}}) Other Services</strong></li>
+				<li class = "list-group-item">Notes: {{listing.notes}}</li>
+				<li class = "list-group-item">Owner: {{listing.owner}}
+				&nbsp;&nbsp;|&nbsp;&nbsp;Phone: {{listing.phone}}</li>
+				<li class = "list-group-item">Lat/Lon: <font color="blue">{{listing.lat}} / {{listing.lon}}</font>
+				&nbsp;&nbsp;|&nbsp;&nbsp;here: <font color="red"> {{listing.here}}</font></li>
+				<li class = "list-group-item">createDate: {{listing.createDate}}
+				&nbsp;&nbsp;|&nbsp;&nbsp;updatedDate: {{listing.updatedDate}}</li>
+				<li class = "list-group-item">archive: <font color="red"> {{listing.archive}}</font>
+				&nbsp;&nbsp;|&nbsp;&nbsp;verified: <font color="red"> {{listing.verified}}</font></li>
+				<li class = "list-group-item">disputed: {{listing.disputed}}
+				&nbsp;&nbsp;|&nbsp;&nbsp;dupe: {{listing.dupe}}
+				&nbsp;&nbsp;|&nbsp;&nbsp;votes: {{listing.votes}}</li>
+			</ul>
+		
+		</div>
+		<a class = "btn btn-default" [routerLink] = "['/listings']">Go back </a>
+		<a class = "btn btn-default" [routerLink] = "['/edit-listing/'+listing.$key]">Edit</a>
+		<a (click)="onDeleteClick()" class = "btn btn-danger" >Delete</a>
+	</div>
+
+</div>
