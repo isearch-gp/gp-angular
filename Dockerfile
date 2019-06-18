@@ -3,7 +3,7 @@
 #
 # base image (from 1.07 GB to 292 MB) Yay Alpine!
 #FROM node:9.4
-FROM node:8.9-alpine
+FROM node:8.16-alpine
 
 # Set one or more individual labels
 LABEL com.rkosecurity.name="gp-angular Web Interface"
